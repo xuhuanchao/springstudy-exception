@@ -1,0 +1,60 @@
+server:
+  port: 8070
+
+
+
+spring:
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+#  mvc:
+#    view:
+#      prefix: classpath:/templates/error/
+#      suffix: .html
+#  thymeleaf:
+#    prefix: classpath:/templates/ftl
+#    suffix: .html
+  freemarker:
+    allow-request-override: false
+    allow-session-override: false
+    cache: true
+    check-template-location: true
+    content-type: text/html
+    enabled: true
+    expose-request-attributes: false
+    expose-session-attributes: false
+    expose-spring-macro-helpers: true
+    prefer-file-system-access: true
+    suffix: .html
+    template-loader-path: classpath:templates/ftl/
+    settings:
+      template_update_delay: 0
+      default_encoding: UTF-8
+      classic_compatible: true
+    order: 1
+
+
+# start.html页面异常连接集合数据
+startpage:
+  message: 异常测试，点击连接产生异常
+  links:
+    - <a href="http://localhost:${server.port}/test/getError/1">获得NullPointerException</a>
+    - <a href="http://localhost:${server.port}/test/getError/2">获得IllegalArgumentException</a>
+    - <a href="http://localhost:${server.port}/test/getError/3">获得IOException</a>
+    - <a href="http://localhost:${server.port}/test/getError/4">获得SubBusinessException</a>
+    - <a href="http://localhost:${server.port}/test/getError/5">获得ResponseStatusException</a>
+    - <a href="http://localhost:${server.port}/test/getError/6">获得HttpRequestMethodNotSupportedException</a>
+    - <a href="http://localhost:${server.port}/test/getError/1000">获得BusinessException</a>
+
+# SelfSimpleExceptionResolver 的配置信息
+self-exception-resolver-properties:
+  exceptionViewMapPropertiesPath: exception/exception_view_map.properties
+  excludedExceptions:
+    - com.xhc.springtest.exception.SubBusinessException
+    - com.xhc.springtest.exception.ResponseStatusException
+    - org.springframework.web.HttpRequestMethodNotSupportedException
+
+
+

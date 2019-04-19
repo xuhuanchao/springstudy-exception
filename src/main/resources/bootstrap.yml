@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: spring-test
+
+
+eureka:
+  client:
+    enabled: false
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: 172.31.64.32:${server.port}
+
+
+
+
+
+
+
+
+
